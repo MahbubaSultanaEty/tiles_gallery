@@ -79,7 +79,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+         <Link href="/login" className="btn border-4 hover:bg-black hover:text-white transition duration-300">
+            Login
+          </Link>
         </div>
       </div>
     </div>

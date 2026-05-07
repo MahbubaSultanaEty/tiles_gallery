@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Lottie from "lottie-react";
-import sparkle from "@/assets/sparkle.json";
 import { TooltipArrow } from "@heroui/react";
 
 export default function Banner() {

@@ -26,8 +26,7 @@ export default function Banner() {
       alt="Tiles background"
       fill
       priority
-      className="object-cover"
-      style={{ animation: "subtleZoom 25s ease-in-out infinite alternate" }}
+      className="object-cover"      
     />
 
     {/* Dark overlay for readability */}
@@ -52,7 +51,7 @@ export default function Banner() {
 
       <Link
         href="/tiles"
-        className="inline-block mt-8 px-8 py-3 rounded-full bg-primary text-white font-semibold shadow-lg hover:scale-105 transition duration-300"
+        className="inline-block mt-8 px-8 py-3 rounded-full bg-primary text-white font-semibold shadow-lg animate-bounce md:animate-none hover:scale-105 transition duration-300"
       >
         Browse Now →
       </Link>
@@ -60,13 +59,15 @@ export default function Banner() {
 
     {/* Right (optional decorative circle CTA) */}
     <div className="hidden md:flex items-center justify-center">
-      <div className="w-40 h-40 rounded-full border bg-white/30 flex items-center justify-center text-white text-2xl hover:scale-110 transition ">
-            {/* <Lottie animationData={sparkle} loop={true} /> */}
-            
-             <Image width="50" height="50" src="https://img.icons8.com/ios-filled/50/medium-icons.png" alt="medium-icons"/>
-      </div>
+      <div className="w-40 h-40 rounded-full border bg-white/30 flex items-center justify-center text-white text-2xl animate-[spinPause_3s_linear_infinite] ">
+  <Image
+    width="50"
+    height="50"
+    src="https://img.icons8.com/ios-filled/50/medium-icons.png"
+    alt="medium-icons"
+  />
+</div>
     </div>
-
   </div>
 
 </section>

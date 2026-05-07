@@ -2,9 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "@/assets/logo.png";
+import Navlinks from "./Navlinks";
 
 const Navbar = () => {
+
+  const links = [
+    {
+      name: "Home",
+      href: "/"
+    },
+    {
+      name: "Tiles",
+      href: "/tiles"
+    },
+    {
+      name: "profile",
+      href: "/profile"
+    }
+  ]
+
   return (
+
     <div className="relative">
       <div className="absolute top-0 left-0 right-0 w-9/12 mx-auto rounded-b-lg z-10  navbar bg-white/40 shadow-sm">
         <div className="navbar-start ">
@@ -28,25 +46,18 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-white/60 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
+              {
+                links.map((link, index) => (
+                  <li key={index} >
+                    <Navlinks href={link.href} >
+                        {link.name}
+                    </Navlinks>
+                      
                   </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+                ))
+              }
             </ul>
           </div>
           <Link href="/">
@@ -55,25 +66,16 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Submenu 1</a>
+           {
+                links.map((link, index) => (
+                  <li key={index} className="md:text-sm font-semibold mr-4">
+                    <Navlinks href={link.href} >
+                        {link.name}
+                    </Navlinks>
+                      
                   </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+                ))
+              }
           </ul>
         </div>
         <div className="navbar-end">

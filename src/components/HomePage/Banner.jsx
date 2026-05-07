@@ -1,5 +1,10 @@
+
+
 import Image from "next/image";
 import Link from "next/link";
+import Lottie from "lottie-react";
+import sparkle from "@/assets/sparkle.json";
+import { TooltipArrow } from "@heroui/react";
 
 export default function Banner() {
   return (
@@ -55,8 +60,10 @@ export default function Banner() {
 
     {/* Right (optional decorative circle CTA) */}
     <div className="hidden md:flex items-center justify-center">
-      <div className="w-40 h-40 rounded-full border border-white/20 flex items-center justify-center text-white text-2xl hover:scale-110 transition">
-        →
+      <div className="w-40 h-40 rounded-full border bg-white/30 flex items-center justify-center text-white text-2xl hover:scale-110 transition ">
+            {/* <Lottie animationData={sparkle} loop={true} /> */}
+            
+             <Image width="50" height="50" src="https://img.icons8.com/ios-filled/50/medium-icons.png" alt="medium-icons"/>
       </div>
     </div>
 

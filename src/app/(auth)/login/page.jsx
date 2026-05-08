@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Card,
@@ -12,9 +13,27 @@ import {
 import { Check } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "/tiles"
+    })
+    if (error) {
+      toast.error(error.message);
+    }
+    if (data) {
+      toast.success("Logged in successfully!");
+    }
+  };
+ 
     return (
         <>
                 <Card className="mt-32 bg-white/70 max-w-7xl  mx-auto">

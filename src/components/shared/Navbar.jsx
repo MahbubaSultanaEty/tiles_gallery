@@ -1,10 +1,18 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import logo from "@/assets/logo.png";
 import Navlinks from "./Navlinks";
 
+
 const Navbar = () => {
+
+  const { data: session, isPending } = authClient.useSession();
+  console.log(session);
+
+  const user = session?.user;
 
   const links = [
     {
@@ -79,9 +87,27 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-         <Link href="/login" className="btn border-4 hover:bg-black hover:text-white transition duration-300">
-            Login
-          </Link>
+          {isPending ? (
+           <span className="loading loading-spinner loading-xs"></span>
+          ) : !user ? (
+            <Link href="/login" className="btn border-4 hover:bg-black bg-white/70 hover:text-white transition duration-300">
+              Login
+            </Link>
+          ) : (
+            <div className="flex items-center gap-4">
+              <div className="bg-amber-50 rounded-full">
+                 <Image className="rounded-full h-10 w-10" src={ user?.image} alt="user avatar" height={20} width={20}/>
+                </div>
+               
+                  <Link
+                    onClick={() => authClient.signOut()}
+                    href="/login" className="btn border-4 hover:bg-black bg-white/70 hover:text-white transition duration-300">
+              Logout
+            </Link>
+              </div>
+             )}
+        
+          
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Card,
@@ -10,12 +11,38 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { email } from "better-auth";
+import { error } from "better-auth/api";
 import { Check, CircleDot } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
-  const onSubmit = () => {};
+  const router = useRouter();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+   const name = e.target.name.value;
+   const email = e.target.email.value;
+   const password = e.target.password.value;
+   const image = e.target.image.value;
+
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      image
+    })
+    if (error) {
+      toast.error(error.message)
+    }
+    if (data) {
+      toast.success("Account created successfully! Please log in.")
+      router.push("/login");
+    }
+  };
     return (
         <>
             <Card className="mt-32 bg-white/70 max-w-7xl  mx-auto">

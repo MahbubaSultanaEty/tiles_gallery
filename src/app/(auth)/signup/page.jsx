@@ -16,10 +16,14 @@ import { error } from "better-auth/api";
 import { Check, CircleDot } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { toast } from "react-toastify";
 
 const SignUpPage = () => {
+
+  const [isShowPassword, setIsShowPassword] = useState(false);
+
   const router = useRouter();
 
   const onSubmit = async (e) => {
@@ -43,14 +47,27 @@ const SignUpPage = () => {
       router.push("/login");
     }
   };
+
+   const handleGoogleLogin = async () => {
+     const data = await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/tiles"
+     });
+      if (data) {
+        toast.success('Google Sign in successfull');
+        
+      }
+  }
+  
     return (
         <>
             <Card className="mt-32 bg-white/70 max-w-7xl  mx-auto">
           
            <h3 className="text-center text-2xl font-bold">Sign Up for Your Account</h3>
               <Chip></Chip>     
-      <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-        <TextField
+      <Form className="flex w-96 flex-col gap-4 " onSubmit={onSubmit}>
+            <TextField
+              
           isRequired
           name="name"
           type="text"        
@@ -81,12 +98,13 @@ const SignUpPage = () => {
           <Label>Email</Label>
           <Input placeholder="Enter Your Email" />
           <FieldError />
-        </TextField>
-        <TextField
+            </TextField>
+            
+        <TextField className="relative"
           isRequired
           minLength={8}
           name="password"
-          type="password"
+          type={isShowPassword ? "text" : "password"}
           validate={(value) => {
             if (value.length < 8) {
               return "Password must be at least 8 characters";
@@ -99,7 +117,10 @@ const SignUpPage = () => {
             }
             return null;
           }}
-        >
+            > 
+              <span onClick={() => setIsShowPassword(!isShowPassword)} className="absolute right-18 z-30 top-9 cursor-pointer"> 
+                            {isShowPassword ? <BsEye /> : <BsEyeSlash /> }  
+                              </span>
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
@@ -122,7 +143,7 @@ const SignUpPage = () => {
   </div>
 
   {/* Google Login */}
-  <button className="w-full border border-gray-300 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
+  <button onClick={handleGoogleLogin} className="w-full border border-gray-300 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
               <Image
                   width={10}
                   height={10}

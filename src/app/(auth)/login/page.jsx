@@ -10,12 +10,15 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { Check } from "lucide-react";
+import { Check, Eye } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
+
+  const [isShowPassword, setIsShowPassword] = useState(false);  
   const onSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -33,13 +36,24 @@ const LoginPage = () => {
       toast.success("Logged in successfully!");
     }
   };
+
+  const handleGoogleLogin = async () => {
+   const data = await authClient.signIn.social({
+    provider: "google",
+    callbackURL: "/tiles"
+   });
+    if (data) {
+      toast.success('Google Sign in successfull');
+      
+    }
+  }
  
     return (
         <>
                 <Card className="mt-32 bg-white/70 max-w-7xl  mx-auto">
           <h3 className="text-center text-3xl font-bold">Login to Your Account</h3>
           <div className="divider"></div>
-      <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
+      <Form className="flex w-96  flex-col gap-4" onSubmit={onSubmit}>
         <TextField
           isRequired
           name="email"
@@ -54,12 +68,13 @@ const LoginPage = () => {
           <Label>Email</Label>
           <Input placeholder="Enter Your Email" />
           <FieldError />
-        </TextField>
-        <TextField
+            </TextField>
+            <fieldset className="relative">
+            <TextField
           isRequired
           minLength={8}
           name="password"
-          type="password"
+          type={isShowPassword ? "text" : "password"}
           validate={(value) => {
             if (value.length < 8) {
               return "Password must be at least 8 characters";
@@ -72,14 +87,19 @@ const LoginPage = () => {
             }
             return null;
           }}
-        >
+            >
+              <span onClick={() => setIsShowPassword(!isShowPassword)} className="absolute right-18 z-30 top-9 cursor-pointer"> 
+              {isShowPassword ? <BsEye /> : <BsEyeSlash /> }  
+                </span>
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
           <FieldError />
-        </TextField>
+        </TextField>  
+            </fieldset>
+        
               <div className="flex gap-2">                
           <Button className="w-full bg-indigo-700" type="submit">
             <Check />
@@ -95,7 +115,7 @@ const LoginPage = () => {
   </div>
 
   {/* Google Login */}
-  <button className="w-full border border-gray-300 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
+  <button onClick={handleGoogleLogin} className="w-full border border-gray-300 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 transition">
               <Image
                   width={10}
                   height={10}

@@ -6,7 +6,7 @@ import { TooltipArrow } from "@heroui/react";
 
 export default function Banner() {
   return (
-   <section className=" w-full h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+   <section className="mt-20 w-full h-[90vh] flex items-center justify-center overflow-hidden bg-black">
 
   {/* Background */}
   <div className="absolute inset-0">

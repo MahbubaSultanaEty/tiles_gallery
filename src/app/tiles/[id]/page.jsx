@@ -9,7 +9,7 @@ const TilesDetailsPage = async ({ params }) => {
     // console.log(id);
     const tile = await getTileById(id);
     return (
-    <div className="mt-25 min-h-screen bg-gradient-to-br from-slate-100 via-white to-cyan-50 py-10 px-4 md:px-10">
+    <div className="mt-25 min-h-screen bg-gradient-to-br from-slate-100/50 via-white/60 to-cyan-50 py-10 px-4 md:px-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         {/* Images Section */}
         <div className="space-y-5">
@@ -31,7 +31,8 @@ const TilesDetailsPage = async ({ params }) => {
             <div className="overflow-hidden rounded-2xl shadow-lg group">
               <img
                 src={tile.image1}
-                alt="Tile Preview 1"
+                                alt="Tile Preview 1"
+                               
                 className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
               />
             </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import logo from "@/assets/logo.png";
 import Navlinks from "./Navlinks";
+import { toast } from "react-toastify";
 
 
 const Navbar = () => {
@@ -100,7 +101,16 @@ const Navbar = () => {
                 </div>
                
                   <Link
-                    onClick={() => authClient.signOut()}
+                    onClick={async () => {
+                      const { error } = await authClient.signOut();
+                      if (error) {
+                        toast.error("Error logging out: " + error.message);
+                      } else {
+                        toast("Logged out successfully!");
+                      }
+                    }
+                  
+                    }
                     href="/login" className="btn border-4 hover:bg-black bg-white/70 hover:text-white transition duration-300">
               Logout
             </Link>

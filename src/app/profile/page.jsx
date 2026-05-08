@@ -39,7 +39,7 @@ const ProfilePage = () => {
           
           <div>
             <p className="text-sm text-gray-500 mb-1">
-              Full Name
+              Name
             </p>
             <h4 className="font-semibold text-gray-800">
               {user?.name}

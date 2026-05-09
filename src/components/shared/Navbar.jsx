@@ -105,7 +105,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
                   <div className="bg-amber-50 rounded-full">
                     <Link href="/my-profile">
-                      <div className="rounded-full border-2 p-1">
+                      <div className="rounded-full border-2 border-white">
                          <Avatar>
                         <Avatar.Image src={user?.image || userAvatar} alt={ user?.name} referrerPolicy="no-referrer"/>
                         <Avatar.Fallback>{ user?.name?.split(' ').map(n => n[0]).join('') }</Avatar.Fallback>

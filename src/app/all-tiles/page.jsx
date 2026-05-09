@@ -2,8 +2,7 @@
 import LottieComp from "@/components/shared/LottieComp";
 import TilesContainer from "@/components/shared/TilesContainer";
 import { getTiles } from "@/lib/data";
-import Image from "next/image";
-import Link from "next/link";
+
 
 
 

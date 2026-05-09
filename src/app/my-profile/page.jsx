@@ -1,6 +1,8 @@
 "use client";
 
+import UpdateUserModal from "@/components/shared/UpdateUserModal";
 import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
 import Image from "next/image";
 import React from "react";
 
@@ -11,17 +13,22 @@ const ProfilePage = () => {
 
 
   return (
-    <div className="min-h-screen  flex items-center justify-center px-4">
+    <div className="min-h-screen  mt-10 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white/70 backdrop-blur-xl border border-white/40 shadow-2xl rounded-[2rem] p-8 text-center">
         
         {/* Profile Image */}
         <div className="relative w-32 h-32 mx-auto mb-6">
-          <Image
-            src={user?.image}
-            alt={user?.name}
-            fill
-            className="rounded-full object-cover border-4 border-indigo-200 shadow-lg"
-          />
+          <Avatar className="h-32 w-32">
+           <Avatar.Image
+            src={user?.image }
+            alt={user?.name}              
+            referrerPolicy="no-referrer"
+            />
+            <Avatar.Fallback className="text-3xl">
+              {user?.name?.charAt(0).toUpperCase()}
+            </Avatar.Fallback>
+          </Avatar>
+          
         </div>
 
         {/* Name */}
@@ -30,7 +37,7 @@ const ProfilePage = () => {
         </h2>
 
         {/* Email */}
-        <p className="text-gray-500 text-lg mb-8">
+        <p className="text-gray-500 text-xs mb-8">
           {user?.email}
         </p>
 
@@ -54,6 +61,11 @@ const ProfilePage = () => {
               {user?.email}
             </h4>
           </div>
+
+          <div className="flex justify-end">
+<UpdateUserModal user={user} />
+          </div>
+          
 
         </div>
       </div>

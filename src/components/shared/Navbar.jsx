@@ -7,6 +7,7 @@ import logo from "@/assets/logo.png";
 import Navlinks from "./Navlinks";
 import { toast } from "react-toastify";
 import userAvatar from "@/assets/user-avatar.png";
+import { Avatar } from "@heroui/react";
 
 
 const Navbar = () => {
@@ -92,13 +93,25 @@ const Navbar = () => {
           {isPending ? (
            <span className="loading loading-spinner loading-xs"></span>
           ) : !user ? (
+              <div className="flex items-center gap-4">
+                <Avatar >
+                        <Avatar.Image src={ userAvatar} alt='user avatar' />                      
+      </Avatar>          
             <Link href="/login" className="btn border-4 hover:bg-black bg-white/70 hover:text-white transition duration-300">
               Login
-            </Link>
+                </Link>
+                </div>
           ) : (
             <div className="flex items-center gap-4">
-              <div className="bg-amber-50 rounded-full">
-                 <Image className="rounded-full h-10 w-10" src={ user?.image || userAvatar} alt="user avatar" height={20} width={20}/>
+                  <div className="bg-amber-50 rounded-full">
+                    <Link href="/my-profile">
+                      <div className="rounded-full border-2 p-1">
+                         <Avatar>
+                        <Avatar.Image src={user?.image || userAvatar} alt={ user?.name} referrerPolicy="no-referrer"/>
+                        <Avatar.Fallback>{ user?.name?.split(' ').map(n => n[0]).join('') }</Avatar.Fallback>
+      </Avatar>            
+                      </div>          
+                    </Link>             
                 </div>
                
                   <Link

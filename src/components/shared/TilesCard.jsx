@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
 
 const TilesCard = ({ tile }) => {
     return (
@@ -35,10 +37,12 @@ const TilesCard = ({ tile }) => {
                 <span className="text-lg font-bold text-primary">
                   ${tile.price}
                 </span>
-
-                <button className="px-4 py-2 rounded-full  border-4 hover:bg-black hover:text-white transition duration-300">
+              <Link  href={`/all-tiles/${tile.id}`}>
+              <button className="px-4 py-2 rounded-full  border-4 hover:bg-black hover:text-white transition duration-300">
                   View Details
                 </button>
+              </Link>
+                
               </div>
             </div>
           </div>   

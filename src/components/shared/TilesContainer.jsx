@@ -15,11 +15,11 @@ const TilesContainer = ({ tiles }) => {
   return (
     <>
       {/* Search Bar */}
-      <div className="max-w-2xl mx-auto mb-12">
+      <div className="max-w-2xl mx-auto mb-12 ">
         <Input
           size="lg"
           radius="full"
-          placeholder="Search tiles by title..."
+          placeholder="Search tiles ..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           classNames={{

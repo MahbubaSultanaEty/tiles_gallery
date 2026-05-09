@@ -38,9 +38,9 @@ export default function FeaturedSlider() {
                 height={200}
                 className="object-cover w-full h-48 rounded-lg"
                     />
-                    <p className="text-xs text-semibold text-gray-500 mt-2">
+                    <div className="text-xs text-semibold text-gray-500 mt-2">
                         {tile.title} <p className=" badge badge-success text-white/80">in use</p>
-                    </p>
+                    </div>
             </div>
           </SwiperSlide>
         ))

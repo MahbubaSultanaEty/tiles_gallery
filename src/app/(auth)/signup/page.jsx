@@ -54,7 +54,7 @@ const SignUpPage = () => {
       callbackURL: "/"
      });
       if (data) {
-        toast.success('Google Sign in successfull');
+        toast.success('Signing in...');
         
       }
   }

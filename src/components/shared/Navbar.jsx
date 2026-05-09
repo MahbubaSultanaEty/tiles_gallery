@@ -6,6 +6,7 @@ import React from "react";
 import logo from "@/assets/logo.png";
 import Navlinks from "./Navlinks";
 import { toast } from "react-toastify";
+import userAvatar from "@/assets/user-avatar.png";
 
 
 const Navbar = () => {
@@ -21,12 +22,12 @@ const Navbar = () => {
       href: "/"
     },
     {
-      name: "Tiles",
-      href: "/tiles"
+      name: "All Tiles",
+      href: "/all-tiles"
     },
     {
-      name: "profile",
-      href: "/profile"
+      name: "My Profile",
+      href: "/my-profile"
     }
   ]
 
@@ -97,7 +98,7 @@ const Navbar = () => {
           ) : (
             <div className="flex items-center gap-4">
               <div className="bg-amber-50 rounded-full">
-                 <Image className="rounded-full h-10 w-10" src={ user?.image} alt="user avatar" height={20} width={20}/>
+                 <Image className="rounded-full h-10 w-10" src={ user?.image || userAvatar} alt="user avatar" height={20} width={20}/>
                 </div>
                
                   <Link

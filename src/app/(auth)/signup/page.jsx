@@ -51,7 +51,7 @@ const SignUpPage = () => {
    const handleGoogleLogin = async () => {
      const data = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/tiles"
+      callbackURL: "/"
      });
       if (data) {
         toast.success('Google Sign in successfull');

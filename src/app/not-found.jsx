@@ -38,7 +38,7 @@ const NotFoundPage = () => {
           </Link>
 
           <Link
-            href="/tiles"
+            href="/all-tiles"
             className="border-2 border-black px-6 py-3 rounded-xl font-medium hover:bg-black hover:text-white transition duration-300"
           >
             Explore Tiles

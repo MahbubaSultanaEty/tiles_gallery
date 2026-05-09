@@ -95,7 +95,7 @@ const TilesDetailsPage = async ({ params }) => {
           </div>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                        <Link href="/tiles">
+                        <Link href="/all-tiles">
                              <button className="bg-cyan-700 hover:bg-cyan-800 text-white font-semibold px-8 py-4 flex gap-4 justify-center w-full items-center rounded-2xl transition duration-300 shadow-lg hover:scale-[1.02]">
             <ArrowLeft/>  Tiles 
             </button>

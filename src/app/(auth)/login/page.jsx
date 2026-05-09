@@ -27,7 +27,7 @@ const LoginPage = () => {
     const { data, error } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/tiles"
+      callbackURL: "/"
     })
     if (error) {
       toast.error(error.message);
@@ -40,7 +40,7 @@ const LoginPage = () => {
   const handleGoogleLogin = async () => {
    const data = await authClient.signIn.social({
     provider: "google",
-    callbackURL: "/tiles"
+    callbackURL: "/"
    });
     if (data) {
       toast.success('Google Sign in successfull');

@@ -22,7 +22,7 @@ const TilesContainer = ({ tiles }) => {
           placeholder="Search tiles ..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          classNames={{
+          classnames={{
             inputWrapper:
               "h-16 bg-white shadow-xl border border-gray-200 hover:border-primary",
             input: "text-black text-base px-2",

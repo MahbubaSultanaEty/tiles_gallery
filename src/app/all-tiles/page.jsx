@@ -3,7 +3,10 @@ import LottieComp from "@/components/shared/LottieComp";
 import TilesContainer from "@/components/shared/TilesContainer";
 import { getTiles } from "@/lib/data";
 
-
+export const metadata = {
+  title: "Tile Gallery- All Tiles",
+  description: "Tile Gallery is a modern web application designed to showcase premium and aesthetic tile collections for interior and architectural inspiration.",
+};
 
 
 const AllTilesPage = async () => {

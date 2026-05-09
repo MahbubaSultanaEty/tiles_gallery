@@ -4,7 +4,7 @@ A modern and aesthetic tile showcase web application built with Next.js, designe
 
 ## 🌐 Live Website
 
-https://tiles-gallery-rho.vercel.app/my-profile
+https://tiles-gallery-rho.vercel.app
 
 ---
 

@@ -33,9 +33,10 @@ const AllTilesPage = async () => {
         </p>
       </div>      
       
+      
   {/* Tiles Grid */}
     <TilesContainer tiles={tiles}/>
-    
+   
     </section>
   );
 };

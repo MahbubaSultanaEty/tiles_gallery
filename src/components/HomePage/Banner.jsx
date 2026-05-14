@@ -48,7 +48,7 @@ export default function Banner() {
       </p>
 
       <Link
-        href="/tiles"
+        href="/all-tiles"
         className="inline-block mt-8 px-8 py-3 rounded-full bg-primary text-white font-semibold shadow-lg animate-bounce md:animate-none hover:scale-105 transition duration-300"
       >
         Browse Now →
